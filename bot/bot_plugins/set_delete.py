@@ -16,24 +16,24 @@ async def setdelete(bot, update: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
+                    InlineKeyboardButton("1 hr", callback_data="setdelete_3600"),
                     InlineKeyboardButton("30 min", callback_data="setdelete_1800"),
+                ],
+                [
                     InlineKeyboardButton("25 min", callback_data="setdelete_1500"),
-                ],
-                [
                     InlineKeyboardButton("20 min", callback_data="setdelete_1200"),
-                    InlineKeyboardButton("15 min", callback_data="setdelete_900"),
                 ],
                 [
+                    InlineKeyboardButton("15 min", callback_data="setdelete_900"),
                     InlineKeyboardButton("12 min", callback_data="setdelete_720"),
+                ],
+                [
                     InlineKeyboardButton("10 min", callback_data="setdelete_600"),
+                    InlineKeyboardButton("5 min", callback_data="setdelete_300"),
                 ],
                 [
                     InlineKeyboardButton("1 min", callback_data="setdelete_60"),
                     InlineKeyboardButton("20 sec", callback_data="setdelete_20"),
-                ],
-                [
-                    InlineKeyboardButton("10 sec", callback_data="setdelete_10"),
-                    InlineKeyboardButton("5 sec", callback_data="setdelete_5"),
                 ],
             ]
         ),
