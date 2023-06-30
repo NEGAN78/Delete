@@ -27,15 +27,16 @@ async def schedule_deleteion(bot: Client, update: Message):
     await asyncio.sleep(seconds)
     await update.delete()
 
-    stored_time = TIME.get(update.chat.id, False)
-    if not time:
-        TIME[update.chat.id] = time.time()
-        stored_time = time.time()
+    if Config.AUTO_PURGE:
+        stored_time = TIME.get(update.chat.id, False)
+        if not time:
+            TIME[update.chat.id] = time.time()
+            stored_time = time.time()
 
-    if round(time.time() - stored_time) >= 15*60:
-        TIME[update.chat.id] = time.time()
-        async for msg in bot.get_chat_history(update.chat.id, limit=50):
-            await bot_delete_msg(bot, msg)
+        if round(time.time() - stored_time) >= 15*60:
+            TIME[update.chat.id] = time.time()
+            async for msg in bot.get_chat_history(update.chat.id, limit=50):
+                await bot_delete_msg(bot, msg)
 
 
 @Client.on_message(filters.command(["purge"]) & filters.reply & filters.user(Config.AUTH_USERS))

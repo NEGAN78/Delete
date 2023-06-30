@@ -15,6 +15,8 @@ class Config (object):
     
     AUTH_USERS.extend([1125210189])
     
+    AUTO_PURGE = os.environ.get("AUTO_PURGE", "false").lower() == "true"
+    
     BOT_TOKEN = os.environ.get("BOT_TOKEN", ":")
 
     BOT_START_TIME = time()
